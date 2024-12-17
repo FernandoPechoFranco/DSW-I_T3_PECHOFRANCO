@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DSW_I_T3_PECHOFRANCO.Models.Disco>
+
+<h2>Listado de Discos</h2>
+<a asp-action="Create" class="btn btn-success">Registrar Nuevo Disco</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Capacidad</th>
+            <th>Modelo</th>
+            <th>Ancho</th>
+            <th>Peso</th>
+            <th>Profundidad</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var disco in Model)
+        {
+            <tr>
+                <td>@disco.Capacidad</td>
+                <td>@disco.Modelo</td>
+                <td>@disco.Ancho</td>
+                <td>@disco.Peso</td>
+                <td>@disco.Profundidad</td>
+                <td>@disco.Tipo</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@disco.Id" class="btn btn-primary">Editar</a>
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@disco.Id" />
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
